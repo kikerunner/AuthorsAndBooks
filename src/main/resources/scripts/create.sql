@@ -4,7 +4,7 @@ create table IF NOT EXISTS USER(
 	apellido varchar(25)
 );
 
-create table IF NOT EXISTS accounts(
+create table IF NOT EXISTS ACCOUNTS(
 	numAccount INT,
 	balance INT,
 );
