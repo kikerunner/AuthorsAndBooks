@@ -14,35 +14,37 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import es.salesianos.model.Account;
 import es.salesianos.model.User;
+import es.salesianos.service.AccountService;
 import es.salesianos.service.Service;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
-@RequestMapping(value = "/api/v1/user")
+@RequestMapping(value = "/api/v1/account")
 public class PersonController {
 
 	@Autowired
-	private Service service;
+	private AccountService service;
 
 	@RequestMapping(value = "/delete/{tablename}/", method = RequestMethod.GET)
 	public ResponseEntity delete(@PathVariable String tablename, @RequestParam(required = false) Integer id) {
-		service.delete(tablename, id);
+		//service.delete(tablename, id);
 		return new ResponseEntity(HttpStatus.OK);
 	}
 
 	@PostMapping
 	@RequestMapping(value = "/create")
-	public ResponseEntity<User> create(@RequestBody User person) {
-		service.insertOrupdateUser(person);
-		return new ResponseEntity<>(person, HttpStatus.CREATED);
+	public ResponseEntity<Account> create(@RequestBody Account account) {
+		service.insertAccount(account);
+		return new ResponseEntity<>(account, HttpStatus.CREATED);
 	}
 
-	@PostMapping
+	/*@PostMapping
 	@RequestMapping(value = "/list")
 	public ResponseEntity<List<User>> ListAll() {
 		return new ResponseEntity<>(service.listAllUser(), HttpStatus.CREATED);
-	}
+	}*/
 
 
 }

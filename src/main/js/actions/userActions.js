@@ -14,14 +14,14 @@ export function fetchUsers() {
 
 }
 
-export function addUser(json) {
+export function addCuenta(json) {
 
 
     var data = new FormData();
     data.append("json", JSON.stringify(json));
 
     console.log(json)
-    fetch('/api/v1/user/create/', {
+    fetch('/api/v1/account/create/', {
         method: "POST",
         headers: {
             'Accept': 'application/json',

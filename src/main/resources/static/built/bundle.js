@@ -24837,11 +24837,9 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _userActions = __webpack_require__(234);
+	var _AddAccount = __webpack_require__(234);
 	
-	var _AddUserForm = __webpack_require__(235);
-	
-	var _AddUserForm2 = _interopRequireDefault(_AddUserForm);
+	var _AddAccount2 = _interopRequireDefault(_AddAccount);
 	
 	var _UserList = __webpack_require__(236);
 	
@@ -24871,7 +24869,7 @@
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "text-center" },
-	        _react2.default.createElement(_AddUserForm2.default, null),
+	        _react2.default.createElement(_AddAccount2.default, null),
 	        _react2.default.createElement(_UserList2.default, null)
 	      );
 	    }
@@ -24884,48 +24882,6 @@
 
 /***/ }),
 /* 234 */
-/***/ (function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.fetchUsers = fetchUsers;
-	exports.addUser = addUser;
-	function fetchUsers() {
-	
-	    fetch('/api/v1/user/list/').then(function (response) {
-	        console.log(response.data);
-	        return response.data;
-	    }).then(function (data) {
-	        console.log(data);
-	    });
-	}
-	
-	function addUser(json) {
-	
-	    var data = new FormData();
-	    data.append("json", JSON.stringify(json));
-	
-	    console.log(json);
-	    fetch('/api/v1/user/create/', {
-	        method: "POST",
-	        headers: {
-	            'Accept': 'application/json',
-	            'Content-Type': 'application/json'
-	        },
-	        body: JSON.stringify(json)
-	    }).then(function (response) {
-	        console.log(response.data);
-	        return response.data;
-	    }).then(function (data) {
-	        console.log(data);
-	    });
-	}
-
-/***/ }),
-/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24941,7 +24897,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _userActions = __webpack_require__(234);
+	var _userActions = __webpack_require__(235);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -24963,10 +24919,8 @@
 	
 	    _this.state = {
 	
-	      nombre: "",
-	      apellido: "",
-	      dni: ""
-	
+	      numAccount: "",
+	      balance: ""
 	    };
 	    return _this;
 	  }
@@ -24986,9 +24940,9 @@
 	      }
 	    }
 	  }, {
-	    key: "addUser",
-	    value: function addUser() {
-	      (0, _userActions.addUser)(this.state);
+	    key: "addCuenta",
+	    value: function addCuenta() {
+	      (0, _userActions.addCuenta)(this.state);
 	    }
 	  }, {
 	    key: "render",
@@ -25004,21 +24958,15 @@
 	          "div",
 	          null,
 	          _react2.default.createElement("input", { type: "text", className: "form-control",
-	            name: "nombre",
-	            placeholder: "Add a new user name...",
-	            value: this.state.nombre,
+	            name: "numAccount",
+	            placeholder: "Add a new user numAccount...",
+	            value: this.state.numAccount,
 	            onChange: this.handleChange.bind(this),
 	            onKeyDown: this.keyPressed.bind(this) }),
-	          _react2.default.createElement("input", { type: "text", className: "form-control",
-	            name: "apellido",
-	            placeholder: "Add a new user apellido...",
-	            value: this.state.apellido,
-	            onChange: this.handleChange.bind(this),
-	            onKeyDown: this.keyPressed.bind(this) }),
-	          _react2.default.createElement("input", { type: "text", className: "form-control",
-	            placeholder: "Add a new user document id...",
-	            name: "dni",
-	            value: this.state.dni,
+	          _react2.default.createElement("input", { type: "integer", className: "form-control",
+	            name: "balance",
+	            placeholder: "Add a new balance...",
+	            value: this.state.balance,
 	            onChange: this.handleChange.bind(this),
 	            onKeyDown: this.keyPressed.bind(this) })
 	        ),
@@ -25027,7 +24975,7 @@
 	          null,
 	          _react2.default.createElement(
 	            "button",
-	            { className: "btn btn-default", type: "button", onClick: this.addUser.bind(this) },
+	            { className: "btn btn-default", type: "button", onClick: this.addCuenta.bind(this) },
 	            "Insert User"
 	          )
 	        )
@@ -25039,6 +24987,48 @@
 	}(_react2.default.Component);
 	
 	exports.default = AddUserForm;
+
+/***/ }),
+/* 235 */
+/***/ (function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.fetchUsers = fetchUsers;
+	exports.addCuenta = addCuenta;
+	function fetchUsers() {
+	
+	    fetch('/api/v1/user/list/').then(function (response) {
+	        console.log(response.data);
+	        return response.data;
+	    }).then(function (data) {
+	        console.log(data);
+	    });
+	}
+	
+	function addCuenta(json) {
+	
+	    var data = new FormData();
+	    data.append("json", JSON.stringify(json));
+	
+	    console.log(json);
+	    fetch('/api/v1/account/create/', {
+	        method: "POST",
+	        headers: {
+	            'Accept': 'application/json',
+	            'Content-Type': 'application/json'
+	        },
+	        body: JSON.stringify(json)
+	    }).then(function (response) {
+	        console.log(response.data);
+	        return response.data;
+	    }).then(function (data) {
+	        console.log(data);
+	    });
+	}
 
 /***/ }),
 /* 236 */
