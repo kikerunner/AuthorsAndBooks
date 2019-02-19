@@ -6,34 +6,34 @@ export default class UserList extends React.Component {
 
 	constructor(props) {
 		super(props)
-		this.state = { users: [] }
+		this.state = { accounts: [] }
 	}
 
   render() {
-		if (this.state.users.length == 0) {	
-			fetch('/api/v1/user/list/')
+		if (this.state.accounts.length == 0) {	
+			fetch('/api/v1/account/list/')
 			.then((response) => {
 				return response.json();
 			})			
-			.then((user) => {
-        		this.setState({ users: user })
+			.then((account) => {
+        		this.setState({ accounts: account})
       		})
 			
 		}
 
-		if (this.state.users.length > 0) {
+		if (this.state.accounts.length > 0) {
 		
-			var userItems = [];
-			this.state.users.forEach(
-				(usuario) => {
-					userItems.push(<UserItem user={usuario} />)
+			var accountItems = [];
+			this.state.accounts.forEach(
+				(account) => {
+					accountItems.push(<UserItem account={account} />)
 				}
 			)
 		
 		return (
 				<div>
-					{userItems}
-					<UserCount  count={userItems.length}/>
+					{accountItems}
+					<UserCount  count={accountItems.length}/>
 				</div>
 			)
 			

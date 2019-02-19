@@ -25071,7 +25071,7 @@
 	
 			var _this = _possibleConstructorReturn(this, (UserList.__proto__ || Object.getPrototypeOf(UserList)).call(this, props));
 	
-			_this.state = { users: [] };
+			_this.state = { accounts: [] };
 			return _this;
 		}
 	
@@ -25080,26 +25080,26 @@
 			value: function render() {
 				var _this2 = this;
 	
-				if (this.state.users.length == 0) {
-					fetch('/api/v1/user/list/').then(function (response) {
+				if (this.state.accounts.length == 0) {
+					fetch('/api/v1/account/list/').then(function (response) {
 						return response.json();
-					}).then(function (user) {
-						_this2.setState({ users: user });
+					}).then(function (account) {
+						_this2.setState({ accounts: account });
 					});
 				}
 	
-				if (this.state.users.length > 0) {
+				if (this.state.accounts.length > 0) {
 	
-					var userItems = [];
-					this.state.users.forEach(function (usuario) {
-						userItems.push(_react2.default.createElement(_UserItem2.default, { user: usuario }));
+					var accountItems = [];
+					this.state.accounts.forEach(function (account) {
+						accountItems.push(_react2.default.createElement(_UserItem2.default, { account: account }));
 					});
 	
 					return _react2.default.createElement(
 						"div",
 						null,
-						userItems,
-						_react2.default.createElement(_UserCount2.default, { count: userItems.length })
+						accountItems,
+						_react2.default.createElement(_UserCount2.default, { count: accountItems.length })
 					);
 				} else {
 					return _react2.default.createElement(
@@ -25151,26 +25151,28 @@
 	  function UserItem(props) {
 	    _classCallCheck(this, UserItem);
 	
-	    return _possibleConstructorReturn(this, (UserItem.__proto__ || Object.getPrototypeOf(UserItem)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (UserItem.__proto__ || Object.getPrototypeOf(UserItem)).call(this, props));
+	
+	    _this.state = { account: props.account };
+	
+	    return _this;
 	  }
 	
 	  _createClass(UserItem, [{
 	    key: "render",
 	    value: function render() {
-	      var user = this.props.user;
+	      var account = this.props.account;
 	
 	
 	      return _react2.default.createElement(
 	        "div",
-	        { className: "well col-md-4 col-md-offset-4", key: user.dni },
-	        "nombre: ",
-	        user.nombre,
-	        " apellido: ",
-	        user.apellido,
-	        " dni: ",
-	        user.dni,
+	        { className: "well col-md-4 col-md-offset-4", key: account.numAccount },
+	        "N\xFAmero de cuenta: ",
+	        account.numAccount,
+	        " Balance: ",
+	        account.balance,
 	        _react2.default.createElement("br", null),
-	        _react2.default.createElement(_Delete2.default, { id: user.dni })
+	        _react2.default.createElement(_Delete2.default, { id: account.numAccount })
 	      );
 	    }
 	  }]);

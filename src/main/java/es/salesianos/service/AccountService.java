@@ -1,5 +1,7 @@
 package es.salesianos.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -18,4 +20,7 @@ public class AccountService {
 		repository.insert(account);
 	}
 
+	public List<Account> listAllAccounts() {
+		return repository.listAllAccounts();	
+	}
 }

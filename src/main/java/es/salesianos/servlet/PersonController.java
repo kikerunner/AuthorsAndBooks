@@ -40,11 +40,11 @@ public class PersonController {
 		return new ResponseEntity<>(account, HttpStatus.CREATED);
 	}
 
-	/*@PostMapping
+	@PostMapping
 	@RequestMapping(value = "/list")
-	public ResponseEntity<List<User>> ListAll() {
-		return new ResponseEntity<>(service.listAllUser(), HttpStatus.CREATED);
-	}*/
+	public ResponseEntity<List<Account>> ListAll() {
+		return new ResponseEntity<>(service.listAllAccounts(), HttpStatus.CREATED);
+	}
 
 
 }
