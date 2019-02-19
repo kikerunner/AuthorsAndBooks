@@ -24935,7 +24935,7 @@
 	    value: function keyPressed(event) {
 	      if (event.keyCode == 13) {
 	        // If enter is pressed
-	        this.addUser();
+	        this.addCuenta();
 	        console.log("item inserted");
 	      }
 	    }
