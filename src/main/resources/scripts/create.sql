@@ -5,6 +5,6 @@ create table IF NOT EXISTS USER(
 );
 
 create table IF NOT EXISTS ACCOUNTS(
-	numAccount INT,
+	numAccount INT PRIMARY KEY,
 	balance INT,
 );
