@@ -4,7 +4,7 @@
 
 
 	<groupId>es.salesianos.edu</groupId>
-	<artifactId>Servlet</artifactId>
+	<artifactId>AuthorsAndBooks</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
@@ -99,6 +99,7 @@
 	</dependencies>
 
 	<build>
+	<pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
@@ -174,5 +175,6 @@
 			</plugin>
 
 		</plugins>
+		</pluginManagement>
 	</build>
 </project>
