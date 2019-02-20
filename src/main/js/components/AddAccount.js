@@ -37,7 +37,7 @@ export default class AddUserForm extends React.Component {
         <div>
           <input type="text" class="form-control"
             name="numAccount"
-            placeholder="Add a new user numAccount..."
+            placeholder="Add a new cuenta cuenta numAccount..."
             value={this.state.numAccount}
             onChange={this.handleChange.bind(this)}
             onKeyDown={this.keyPressed.bind(this)} />
